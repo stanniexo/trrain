@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TRRAIN - Empowering PwDs and Women through retail training and employment.">
+    <title>TRRAIN - Trust for Retailers and Retail Associates of India</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- BRAND COLORS & GLOBAL STYLES --- */
+        :root {
+            --brand-yellow: #fdc835;
+            --brand-dark: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            color: #333;
+        }
+
+        /* --- UTILITY CLASSES --- */
+        .text-brand { color: var(--brand-yellow) !important; }
+        .bg-brand { background-color: var(--brand-yellow) !important; color: #000; }
+        .bg-dark-custom { background-color: var(--brand-dark) !important; color: white; }
+        
+        .rounded-4 { border-radius: 1rem !important; }
+        .rounded-5 { border-radius: 1.5rem !important; }
+        
+        /* Custom underline for headers */
+        .section-header {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+        .section-header::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background: var(--brand-yellow);
+            bottom: -10px;
+            left: 25%;
+        }
+
+        /* Animation for marquee */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: scroll 30s linear infinite;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Nav tabs customization*/
+        .nav-pills .nav-link {
+            color: #6c757d;
+            border-bottom: 4px solid transparent;
+            border-radius: 0;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 1rem 2rem;
+        }
+        .nav-pills .nav-link.active {
+            background-color: #f8f9fa;
+            color: black;
+            border-bottom: 4px solid var(--brand-yellow);
+        }
+        
+        /* Vertical pills for Support Section */
+        .support-pills .nav-link {
+            border: none;
+            border-radius: 1rem;
+            text-transform: none;
+            text-align: left;
+            margin-bottom: 1rem;
+            background: white;
+            box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+        .support-pills .nav-link:hover {
+            background-color: #f8f9fa;
+        }
+        .support-pills .nav-link.active {
+            background-color: var(--brand-dark);
+            color: white;
+            transform: scale(1.02);
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+        }
+        .support-pills .nav-link.active i {
+            color: black;
+            background-color: var(--brand-yellow) !important;
+        }
+
+        /* Hover effects */
+        .hover-scale { transition: transform 0.3s; }
+        .hover-scale:hover { transform: scale(1.05); }
+        
+        /* Accordion active state */
+        .accordion-button:not(.collapsed) {
+            background-color: var(--brand-yellow);
+            color: black;
+            font-weight: bold;
+        }
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: rgba(0,0,0,.125);
+        }
+
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+        
+        /* Focus accessibility */
+        *:focus-visible { outline: 3px solid #FDD835; outline-offset: 2px; }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#main-navbar">
+
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
+        <div class="container-fluid px-md-5">
+            <a class="navbar-brand fw-bold fs-3" href="#">TRRAIN</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center gap-2">
+                    <li class="nav-item"><a class="nav-link fw-semibold px-3 rounded-pill hover-bg-light text-nowrap" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold px-3 rounded-pill hover-bg-light text-nowrap" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold px-3 rounded-pill hover-bg-light text-nowrap" href="#programs">Programs</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold px-3 rounded-pill hover-bg-light text-nowrap" href="#support">Support Us</a></li>
+                    <li class="nav-item"><a class="nav-link fw-semibold px-3 rounded-pill hover-bg-light text-nowrap" href="#blog">Blog</a></li>
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0 w-100 w-lg-auto">
+                        <a href="#programs" class="btn bg-brand fw-bold shadow-sm w-100 rounded-pill px-4">Apply Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="bg-light py-5">
+        <div class="container px-md-5 py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-extra-bold mb-4 fw-bolder lh-tight">
+                        Turning Disability into
+                        <span class="text-brand">Possibility.</span>
+                    </h1>
+                    <p class="lead text-muted mb-4 text-justify">
+                        In a world that often looks away, TRRAIN sees potential. We don't just offer training; we offer a second chance at life for underprivileged youth and persons with disabilities. Join us in bridging the gap between talent and opportunity.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="#programs" class="btn bg-brand btn-lg fw-bold px-4 rounded-3 shadow-sm hover-scale">Start Your Journey</a>
+                        <a href="#support" class="btn btn-outline-dark btn-lg fw-bold px-4 rounded-3 hover-scale">Support Us</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="rounded-4 overflow-hidden shadow-lg position-relative" style="height: 500px;">
+                        <img src="pankh.jpg" class="w-100 h-100 object-fit-cover" alt="Inclusive workspace">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-25"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-white">
+        <div class="container px-md-5">
+            <div class="text-center mb-5">
+                <h2 class="display-6 fw-bold section-header">The Reality</h2>
+                <p class="text-muted">Why our work matters now more than ever</p>
+            </div>
+            
+            <div class="row g-5 align-items-center">
+                <div class="col-md-6">
+                    <div class="bg-light p-4 rounded-3 border-start border-4 border-danger mb-4">
+                        <h4 class="text-danger fw-bold">The Severity of the Issue</h4>
+                        <p class="mb-0">Over <strong>26.8 million</strong> people in India live with a disability. Less than <strong>36%</strong> are employed. The gap isn't just economic; it's social.</p>
+                    </div>
+                    <h3 class="fw-bold">Our Theory of Change</h3>
+                    <p class="text-muted">We believe that <strong>dignity comes from independence</strong>. By identifying marginalized individuals, providing them with market-relevant retail skills, and ensuring inclusive placements, we break the cycle of poverty and exclusion.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="bg-light p-4 rounded-4 text-center h-100">
+                                <div class="display-4 fw-bold text-brand mb-2">64%</div>
+                                <p class="small fw-bold text-uppercase mb-0">Unemployed PwDs</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="bg-light p-4 rounded-4 text-center h-100">
+                                <div class="display-4 fw-bold text-brand mb-2">100%</div>
+                                <p class="small fw-bold text-uppercase mb-0">Our Dedication</p>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="bg-dark-custom p-4 rounded-4 text-center">
+                                <p class="fs-5 fst-italic mb-0 text-white">"Skill is the bridge between exclusion and inclusion."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-brand py-5 text-center">
+        <div class="container">
+            <h2 class="fw-bold mb-5 section-header border-black">Our Impact</h2>
+            <div class="row g-4">
+                <div class="col-6 col-md-3 hover-scale">
+                    <div class="display-4 fw-bolder mb-2">38,000+</div>
+                    <div class="small fw-bold text-uppercase letter-spacing-2">PwDs Impacted</div>
+                </div>
+                <div class="col-6 col-md-3 hover-scale">
+                    <div class="display-4 fw-bolder mb-2">16,000+</div>
+                    <div class="small fw-bold text-uppercase letter-spacing-2">Women Impacted</div>
+                </div>
+                <div class="col-6 col-md-3 hover-scale">
+                    <div class="display-4 fw-bolder mb-2">300+</div>
+                    <div class="small fw-bold text-uppercase letter-spacing-2">RETAIL ASSOCIATES AWARDED</div>
+                </div>
+                <div class="col-6 col-md-3 hover-scale">
+                    <div class="display-4 fw-bolder mb-2">~22 M</div>
+                    <div class="small fw-bold text-uppercase letter-spacing-2">RETAIL EMPLOYEES CELEBRATED</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold section-header">Stories of Impact</h2>
+                <p class="text-muted">Real lives, real change</p>
+            </div>
+
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-8">
+                    <div class="ratio ratio-16x9 rounded-4 shadow-lg bg-black overflow-hidden">
+                        <video controls poster="pankh thumbnail.JPG">
+                            <source src="pankh.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p class="text-center mt-3 text-muted small">PANKH (Testimonial)</p>
+                </div>
+            </div>
+
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-8">
+                    <div class="ratio ratio-16x9 rounded-4 shadow-lg bg-black overflow-hidden">
+                        <video controls poster="tha thumbnail.JPG">
+                            <source src="tha.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p class="text-center mt-3 text-muted small">TRRAINHer Ascent (Testimonial)</p>
+                </div>
+            </div>
+
+            <!-- testimonial carousel -->
+            <div id="storiesCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner rounded-4 shadow-lg">
+                    <div class="carousel-item active bg-dark-custom">
+                        <div class="d-flex flex-column flex-md-row min-vh-50">
+                            <div class="col-md-6 p-5 d-flex flex-column justify-content-center">
+                                <div class="display-3 text-brand mb-3">“</div>
+                                <p class="fs-4 fst-italic lh-base mb-4 text-white">I used to think my silence was a weakness. TRRAIN taught me it was my strength. Now, when I help a customer smile, I don't need words to feel the pride.</p>
+                                <div>
+                                    <h4 class="text-brand fw-bold mb-0">Sanket Varvare</h4>
+                                    <small class="text-white-50">Customer Service Associate, Reliance</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="sanket.jpg" class="w-100 h-100 object-fit-cover" style="min-height: 400px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item bg-dark-custom">
+                        <div class="d-flex flex-column flex-md-row min-vh-50">
+                            <div class="col-md-6 p-5 d-flex flex-column justify-content-center">
+                                <div class="display-3 text-brand mb-3">“</div>
+                                <p class="fs-4 fst-italic lh-base mb-4 text-white">Financial independence wasn't just about money; it was about dignity. My first paycheck didn't just buy groceries; it bought respect in my own home.</p>
+                                <div>
+                                    <h4 class="text-brand fw-bold mb-0">Anjali Sharma</h4>
+                                    <small class="text-white-50">Store Manager, Puma</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="anjali.jpg" class="w-100 h-100 object-fit-cover" style="min-height: 400px;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item bg-dark-custom">
+                        <div class="d-flex flex-column flex-md-row min-vh-50">
+                            <div class="col-md-6 p-5 d-flex flex-column justify-content-center">
+                                <div class="display-3 text-brand mb-3">“</div>
+                                <p class="fs-4 fst-italic lh-base mb-4 text-white">I was rejected 10 times before I found TRRAIN. They didn't just give me skills; they gave me the belief that I belonged in the corporate world.</p>
+                                <div>
+                                    <h4 class="text-brand fw-bold mb-0">Rahul Verma</h4>
+                                    <small class="text-white-50">Sales Executive, Croma</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="rahul.jpg" class="w-100 h-100 object-fit-cover" style="min-height: 400px;">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#storiesCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#storiesCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-dark-custom py-5 overflow-hidden">
+        <div class="container-fluid text-center">
+            <h3 class="fw-bold mb-4 text-white section-header">Our Collaborators</h3>
+            <div class="bg-white py-4 marquee-container">
+                <div class="marquee-content">
+                    <span class="mx-5 fs-3 fw-bold text-secondary">QUESS</span>
+                    <span class="mx-5 fs-3 fw-bold text-secondary">PUMA</span>
+                    <span class="mx-5 fs-3 fw-bold text-secondary">MOHEY</span>
+                    <span class="mx-5 fs-3 fw-bold text-secondary">MULTIPLIER</span>
+                    <span class="mx-5 fs-3 fw-bold text-secondary">TATA</span>
+                    <span class="mx-5 fs-3 fw-bold text-secondary">RELIANCE</span>
+                    <span class="mx-5 fs-3 fw-bold text-secondary">SHOPPERS STOP</span>
+                    <span class="mx-5 fs-3 fw-bold text-secondary">LIFESTYLE</span>
+                    <span class="mx-5 fs-3 fw-bold text-secondary">MAX</span>
+                    <span class="mx-5 fs-3 fw-bold text-secondary">CROMA</span>
+                    <span class="mx-5 fs-3 fw-bold text-secondary">QUESS</span>
+                    <span class="mx-5 fs-3 fw-bold text-secondary">PUMA</span>
+                    <span class="mx-5 fs-3 fw-bold text-secondary">MOHEY</span>
+                    <span class="mx-5 fs-3 fw-bold text-secondary">MULTIPLIER</span>
+                    <span class="mx-5 fs-3 fw-bold text-secondary">TATA</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    
+
+
+
+    <section id="about" class="py-5 bg-white">
+        
+            
+            
+            
+            <div class="container px-md-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold display-5 section-header">Meet Our Team</h2>
+            </div>
+
+            <ul class="nav nav-pills justify-content-center mb-5" id="pills-tab" role="tablist">
+                <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#pills-founders">Founders & CEO</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-leadership">Leadership Team</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-advisors">Advisory Board</button></li>
+                <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-trustees">Trustees</button></li>
+            </ul>
+
+            <div class="tab-content" id="pills-tabContent">
+                
+                <div class="tab-pane fade show active" id="pills-founders">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-lg p-4 rounded-4">
+                                <div class="d-flex align-items-center">
+                                    <img src="nagesh.jpg" class="rounded-circle border border-4 border-warning me-4" style="width:100px; height:100px; object-fit:cover;">
+                                    <div>
+                                        <h4 class="fw-bold">B.S. Nagesh</h4>
+                                        <span class="badge bg-brand text-dark mb-2">FOUNDER</span>
+                                        <p class="text-muted small">Pioneer of modern retail with 30+ years experience.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-lg p-4 rounded-4">
+                                <div class="d-flex align-items-center">
+                                    <img src="ameesha.jpg" class="rounded-circle border border-4 border-warning me-4" style="width:100px; height:100px; object-fit:cover;">
+                                    <div>
+                                        <h4 class="fw-bold">Ameesha Prabhu</h4>
+                                        <span class="badge bg-brand text-dark mb-2">CEO</span>
+                                        <p class="text-muted small">Co-Founder and CEO with 20+ years experience.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-leadership">
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="lead1.jpg" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Swati Sontakke</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="lead2.jpeg" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Priyaranjan Bidhar</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="lead3.jpeg" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Meena Sriramane</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="lead4.jpeg" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Pooja Nagesh</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="lead5.jpg" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Sajidali Pathan</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="lead6.png" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Sameer Iyer</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="pills-advisors">
+
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="adv1.jpg" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Pinakiranjan Mishra</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="adv2.jpg" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Bala Despande</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="adv3.jpg" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Shalini Kamath</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="adv4.jpg" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Anuj Puri</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="adv5.jpg" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Suhas Tuljapurkar</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="adv6.jpg" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Shashi Sinha</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="adv7.jpg" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Vidya Hariharan</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="adv8.jpg" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Sairee Chahal</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="adv9.webp" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Mr. Rahul Mehta</h5>
+                            </div>
+                        </div>
+                    </div>
+
+
+                     
+                </div>
+                
+                <div class="tab-pane fade" id="pills-trustees">
+                     <div class="row g-4 justify-content-center">
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="tr1.jpg" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Rohit Srivastava</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="tr2.jpg" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Richa Bajpai</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="tr3.jpg" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Vistra ITCL</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="tr4.jpeg" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Megha Tata</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale">
+                                <img src="tr5.jpg" class="rounded-circle mx-auto mb-3" width="80">
+                                <h5>Mr Vijay Jain</h5>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="my-5 bg-dark-custom rounded-5 p-5 text-center shadow-lg position-relative overflow-hidden">
+                <div class="position-relative z-2 text-white">
+                    <h2 class="fw-bold text-brand text-uppercase mb-4">Our Purpose</h2>
+                    <p class="fs-4 fw-light lh-base mx-auto" style="max-width: 800px;">"We aim to empower underprivileged youth, women, and persons with disabilities with industry-ready retail skills and connecting them to dignified employment."</p>
+                </div>
+            </div>
+            
+            <div class="row g-4 text-center">
+                <div class="col-md-3">
+                    <div class="bg-white p-4 rounded-4 shadow border-top border-4 border-warning h-100">
+                        <div class="bg-light rounded-circle w-25 mx-auto mb-3 p-3"><i class="fa-solid fa-bullhorn text-brand fs-4"></i></div>
+                        <h5 class="fw-bold">Mobilization</h5>
+                        <p class="small text-muted">Identifying beneficiaries.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="bg-white p-4 rounded-4 shadow border-top border-4 border-warning h-100">
+                        <div class="bg-light rounded-circle w-25 mx-auto mb-3 p-3"><i class="fa-solid fa-chalkboard-user text-brand fs-4"></i></div>
+                        <h5 class="fw-bold">Skilling</h5>
+                        <p class="small text-muted">Rigorous retail training.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="bg-white p-4 rounded-4 shadow border-top border-4 border-warning h-100">
+                        <div class="bg-light rounded-circle w-25 mx-auto mb-3 p-3"><i class="fa-solid fa-briefcase text-brand fs-4"></i></div>
+                        <h5 class="fw-bold">Employment</h5>
+                        <p class="small text-muted">Placement in retail brands.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="bg-white p-4 rounded-4 shadow border-top border-4 border-warning h-100">
+                        <div class="bg-light rounded-circle w-25 mx-auto mb-3 p-3"><i class="fa-solid fa-sun text-brand fs-4"></i></div>
+                        <h5 class="fw-bold">Dignity</h5>
+                        <p class="small text-muted">Financial independence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-dark-custom text-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold section-header">Our Events</h2>
+                <p class="text-white-50">Celebrating milestones and creating awareness</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card bg-dark border-0 shadow-lg h-100 text-white hover-scale pointer" data-bs-toggle="modal" data-bs-target="#eventModal1">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1000" class="card-img-top opacity-75" style="height:200px; object-fit:cover;">
+                        <div class="card-body text-center">
+                            <h5 class="fw-bold">TRRAIN Retail Awards</h5>
+                            <span class="text-brand small">Feb 2024</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-dark border-0 shadow-lg h-100 text-white hover-scale pointer" data-bs-toggle="modal" data-bs-target="#eventModal2">
+                        <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=1000" class="card-img-top opacity-75" style="height:200px; object-fit:cover;">
+                        <div class="card-body text-center">
+                            <h5 class="fw-bold">Retail Employees Day</h5>
+                            <span class="text-brand small">12 Dec</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-dark border-0 shadow-lg h-100 text-white hover-scale pointer" data-bs-toggle="modal" data-bs-target="#eventModal3">
+                        <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1000" class="card-img-top opacity-75" style="height:200px; object-fit:cover;">
+                        <div class="card-body text-center">
+                            <h5 class="fw-bold">Inclusive Retail Summit</h5>
+                            <span class="text-brand small">Nov 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="eventModal1" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 overflow-hidden border-0">
+                <div class="position-relative h-50">
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1000" class="w-100 h-100 object-fit-cover" style="height:200px;">
+                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3 bg-white rounded-circle p-2" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <span class="badge bg-brand text-dark mb-2">Feb 2024</span>
+                    <h3 class="fw-bold">TRRAIN Retail Awards</h3>
+                    <p class="text-muted">Celebrating the best retail associates in the country with a gala night awarding excellence.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="programs" class="py-5 bg-light">
+        <div class="container px-md-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold display-6 section-header">Apply for Programs</h2>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="bg-dark-custom text-white p-4 rounded-4 shadow mb-5">
+                        <h3 class="text-brand mb-4">Why Join Us?</h3>
+                        <div class="row g-4">
+                            <div class="col-md-4 d-flex gap-3">
+                                <i class="fa-solid fa-certificate text-brand fs-3"></i>
+                                <div><h5 class="fw-bold">Certified Training</h5><small>Industry recognized.</small></div>
+                            </div>
+                            <div class="col-md-4 d-flex gap-3">
+                                <i class="fa-solid fa-handshake text-brand fs-3"></i>
+                                <div><h5 class="fw-bold">Job Placement</h5><small>Interviews with top brands.</small></div>
+                            </div>
+                            <div class="col-md-4 d-flex gap-3">
+                                <i class="fa-solid fa-people-group text-brand fs-3"></i>
+                                <div><h5 class="fw-bold">Mentorship</h5><small>Lifelong support.</small></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-5">
+                        <div class="col-md-6">
+                            <h4 class="fw-bold mb-3">Choose a Course</h4>
+                            <div class="accordion shadow-sm" id="courseAccordion">
+                                <div class="accordion-item border-0 mb-3 rounded-3 overflow-hidden">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                            PANKH - Wings of Destiny
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#courseAccordion">
+                                        <div class="accordion-body text-muted">
+                                            For Persons with Disabilities (PwDs). Specialized training in retail & life skills. 60-day program with job placement.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item border-0 rounded-3 overflow-hidden">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                            TRRAINHer Ascent
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#courseAccordion">
+                                        <div class="accordion-body text-muted">
+                                            For Women in Retail. Focuses on confidence and domain knowledge to bridge the gender gap.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="bg-white p-4 rounded-4 shadow border-top border-4 border-warning">
+                                <h4 class="fw-bold mb-3">Application Form</h4>
+                                <form>
+                                    <div class="mb-3">
+                                        <label class="form-label small fw-bold">Full Name</label>
+                                        <input type="text" class="form-control bg-light border-0" placeholder="Enter name">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label small fw-bold">Email</label>
+                                        <input type="email" class="form-control bg-light border-0" placeholder="Enter email">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label small fw-bold">Program</label>
+                                        <select class="form-select bg-light border-0">
+                                            <option>PANKH</option>
+                                            <option>TRRAINHer</option>
+                                        </select>
+                                    </div>
+                                    <button class="btn bg-brand w-100 fw-bold">SUBMIT APPLICATION</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="support" class="py-5 bg-light border-top">
+        <div class="container px-md-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold section-header">Support Our Cause</h2>
+            </div>
+            
+            <div class="row g-5">
+                <div class="col-md-4">
+                    <div class="nav flex-column nav-pills support-pills" role="tablist">
+                        <button class="nav-link active d-flex align-items-center gap-3" data-bs-toggle="pill" data-bs-target="#v-donate">
+                            <div class="bg-light rounded-circle p-2"><i class="fa-solid fa-heart"></i></div>
+                            <div><div class="fw-bold">Donate</div><small class="text-muted">Contribute funds</small></div>
+                        </button>
+                        <button class="nav-link d-flex align-items-center gap-3" data-bs-toggle="pill" data-bs-target="#v-partner">
+                            <div class="bg-light rounded-circle p-2"><i class="fa-solid fa-handshake"></i></div>
+                            <div><div class="fw-bold">Partner</div><small class="text-muted">Hire or Sponsor</small></div>
+                        </button>
+                        <button class="nav-link d-flex align-items-center gap-3" data-bs-toggle="pill" data-bs-target="#v-volunteer">
+                            <div class="bg-light rounded-circle p-2"><i class="fa-solid fa-hands-helping"></i></div>
+                            <div><div class="fw-bold">Volunteer</div><small class="text-muted">Share skills</small></div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="tab-content bg-white p-5 rounded-4 shadow-lg border-top border-5 border-warning">
+                        
+                        <div class="tab-pane fade show active" id="v-donate">
+                            <h3 class="fw-bold mb-3"><i class="fa-solid fa-heart text-brand me-2"></i> Donate</h3>
+                            <p class="text-muted mb-4">Your contribution helps us train more candidates. Every rupee counts.</p>
+                            <form>
+                                <label class="fw-bold small mb-2">Amount (₹)</label>
+                                <div class="d-flex gap-2 mb-3">
+                                    <button type="button" class="btn btn-outline-warning text-dark flex-grow-1">500</button>
+                                    <button type="button" class="btn btn-outline-warning text-dark flex-grow-1">1000</button>
+                                    <button type="button" class="btn btn-outline-warning text-dark flex-grow-1">2000</button>
+                                </div>
+                                <input type="number" class="form-control bg-light border-0 mb-3" placeholder="Custom Amount">
+                                <button class="btn bg-dark-custom w-100 py-3 fw-bold">PROCEED TO PAY</button>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane fade" id="v-partner">
+                            <h3 class="fw-bold mb-3"><i class="fa-solid fa-handshake text-brand me-2"></i> Partner</h3>
+                            <p class="text-muted mb-4">Join hands to hire skilled associates or sponsor training centers.</p>
+                            <input class="form-control bg-light border-0 mb-3 p-3" placeholder="Company Name">
+                            <button class="btn bg-dark-custom w-100 py-3 fw-bold">SUBMIT INTEREST</button>
+                        </div>
+
+                        <div class="tab-pane fade" id="v-volunteer">
+                            <h3 class="fw-bold mb-3"><i class="fa-solid fa-hands-helping text-brand me-2"></i> Volunteer</h3>
+                            <p class="text-muted mb-4">Mentor our candidates, conduct workshops, or help us with operational support.</p>
+                            <textarea class="form-control bg-light border-0 mb-3 p-3" rows="4" placeholder="How can you help?"></textarea>
+                            <button class="btn bg-dark-custom w-100 py-3 fw-bold">JOIN US</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="py-5 bg-white">
+        <div class="container px-md-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold section-header">Our Blog</h2>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100 border-0 shadow rounded-4 overflow-hidden flex-md-row">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=1000" class="col-md-4 object-fit-cover" style="min-height: 200px;">
+                        <div class="card-body d-flex flex-column justify-content-center p-4">
+                            <h5 class="fw-bold">Role of NGOs in Retail</h5>
+                            <p class="card-text text-muted small line-clamp-2">NGOs play a pivotal role in the retail ecosystem of India...</p>
+                            <a href="#" class="text-brand fw-bold text-decoration-none small stretched-link">READ MORE <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100 border-0 shadow rounded-4 overflow-hidden flex-md-row">
+                        <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=1000" class="col-md-4 object-fit-cover" style="min-height: 200px;">
+                        <div class="card-body d-flex flex-column justify-content-center p-4">
+                            <h5 class="fw-bold">Impact of Diversity</h5>
+                            <p class="card-text text-muted small line-clamp-2">Why inclusive workplaces create better customer interactions...</p>
+                            <a href="#" class="text-brand fw-bold text-decoration-none small stretched-link">READ MORE <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-light pt-5 pb-3 border-top">
+        <div class="container px-md-5">
+            <div class="row g-5 mb-5">
+                <div class="col-md-4">
+                    <h3 class="fw-black">TRRAIN</h3>
+                    <p class="text-muted small">Trust for Retailers and Retail Associates of India.</p>
+                    <div class="d-flex gap-2">
+                        <div class="bg-secondary rounded-circle" style="width:30px; height:30px;"></div>
+                        <div class="bg-secondary rounded-circle" style="width:30px; height:30px;"></div>
+                        <div class="bg-secondary rounded-circle" style="width:30px; height:30px;"></div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2"><a href="#home" class="text-decoration-none text-muted">Home</a></li>
+                        <li class="mb-2"><a href="#about" class="text-decoration-none text-muted">About Us</a></li>
+                        <li class="mb-2"><a href="#programs" class="text-decoration-none text-muted">Programs</a></li>
+                        <li class="mb-2"><a href="#blog" class="text-decoration-none text-muted">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="fw-bold mb-3">Programs</h6>
+                    <ul class="list-unstyled small text-muted">
+                        <li class="mb-2">PANKH</li>
+                        <li class="mb-2">TRRAINHer Ascent</li>
+                        <li class="mb-2">Retail Employees Day</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="fw-bold mb-3">Subscribe</h6>
+                    <p class="small text-muted">Get the latest updates.</p>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Email">
+                        <button class="btn bg-brand">GO</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top pt-3 d-flex flex-column flex-md-row justify-content-between small text-muted">
+                <p>304, Eureka Towers, Mindspace, Mumbai 400064.</p>
+                <p>&copy; 2024 TRRAIN. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
