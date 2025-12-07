@@ -176,7 +176,7 @@
     
 </head>
 <body data-bs-spy="scroll" data-bs-target="#main-navbar">
-                    
+                                    
     <div class="bg-black text-white px-4 py-2 d-flex justify-content-between align-items-center small">
         <div class="d-flex align-items-center gap-3">
             <span>Accessibility Tools:</span>
@@ -1124,7 +1124,7 @@
             counters.forEach(counter => {
                 const target = +counter.getAttribute('data-target'); // gets number from html
                 const duration = 2000; // 2 seconds animation
-                const stepTime = 20; 
+                const stepTime = 20;    
                 const steps = duration / stepTime;
                 const increment = target / steps;
                 
@@ -1146,7 +1146,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting && !hasAnimated) {
                     animateCounters();
-                    hasAnimated = true; 
+                    hasAnimated = true;  
                 }
             });
         }, { threshold: 0.5 }); 
