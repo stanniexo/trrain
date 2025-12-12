@@ -13,7 +13,167 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- brand colors & global styles --- */
+        :root {
+            --brand-yellow: #fdc835;
+            --brand-dark: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            color: #333;
+            /* smooth transition when resizing text */
+            transition: font-size 0.2s ease; 
+        }
+
+        /* --- utility classes --- */
+        .text-brand { color: var(--brand-yellow) !important; }
+        .bg-brand { background-color: var(--brand-yellow) !important; color: #000; }
+        .bg-dark-custom { background-color: var(--brand-dark) !important; color: white; }
+        
+        .rounded-4 { border-radius: 1rem !important; }
+        .rounded-5 { border-radius: 1.5rem !important; }
+        
+        /* custom underline for headers */
+        .section-header {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+        .section-header::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background: var(--brand-yellow);
+            bottom: -10px;
+            left: 25%;
+        }
+
+        /* animation for marquee */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: scroll 30s linear infinite;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* nav tabs customization*/
+        .nav-pills .nav-link {
+            color: #6c757d;
+            border-bottom: 4px solid transparent;
+            border-radius: 0;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 1rem 2rem;
+        }
+        .nav-pills .nav-link.active {
+            background-color: #f8f9fa;
+            color: black;
+            border-bottom: 4px solid var(--brand-yellow);
+        }
+        
+        /* vertical pills for support section */
+        .support-pills .nav-link {
+            border: none;
+            border-radius: 1rem;
+            text-transform: none;
+            text-align: left;
+            margin-bottom: 1rem;
+            background: white;
+            box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+        .support-pills .nav-link:hover {
+            background-color: #f8f9fa;
+        }
+        .support-pills .nav-link.active {
+            background-color: var(--brand-dark);
+            color: white;
+            transform: scale(1.02);
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+        }
+        .support-pills .nav-link.active i {
+            color: black;
+            background-color: var(--brand-yellow) !important;
+        }
+
+        /* hover effects */
+        .hover-scale { transition: transform 0.3s; cursor: pointer; }
+        .hover-scale:hover { transform: scale(1.05); }
+        
+        /* accordion active state */
+        .accordion-button:not(.collapsed) {
+            background-color: var(--brand-yellow);
+            color: black;
+            font-weight: bold;
+        }
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: rgba(0,0,0,.125);
+        }
+
+        /* smooth scroll */
+        html { scroll-behavior: smooth; }
+        
+        /* focus accessibility */
+        *:focus-visible { outline: 3px solid #FDD835; outline-offset: 2px; }
+
+        /* custom scrollbar styling */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #FDD835; }
+
+        /* animation to fade elements in */
+        .fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+
+        /* high contrast mode styles */
+        .high-contrast {
+            background-color: black !important;
+            color: #FDD835 !important;
+        }
+        .high-contrast * {
+            background-color: black !important;
+            color: #FDD835 !important;
+            border-color: #FDD835 !important;
+        }
+        .high-contrast img {
+            filter: grayscale(100%) contrast(150%);
+        }
+
+        /* validation styles for feature 3 */
+        .valid-input { border: 2px solid #198754 !important; }
+        .invalid-input { border: 2px solid #dc3545 !important; }
+
+        /* back to top button styles for feature 5 */
+        #backToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none; /* hidden by default */
+            z-index: 999;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+    </style>
+    
+    
 </head>
 <body data-bs-spy="scroll" data-bs-target="#main-navbar">
                                     
@@ -301,7 +461,7 @@
                 <div class="tab-pane fade show active" id="pills-founders">
                     <div class="row g-4">
                         <div class="col-md-6">
-                            <div class="card h-100 border-0 shadow-lg p-4 rounded-4 hover-scale" onclick="showTeamModal('nagesh.jpg', 'B.S. Nagesh', 'FOUNDER', 'Our founder, Mr. B. S. Nagesh, is one of the pioneers of modern retail and has more than 35 years of experience in retail. He is a firm believer of the philosophy of 25 years of learning, 25 years of earning and 25 years of giving back. TRRAIN (Trust for Retailers and Retail Associates of India) is his way of giving back to the industry that gave him so much over the course of a rewarding career.')">
+                            <div class="card h-100 border-0 shadow-lg p-4 rounded-4 hover-scale" onclick="showTeamModal('nagesh.jpg', 'B.S. Nagesh', 'FOUNDER')">
                                 <div class="d-flex align-items-center">
                                     <img src="nagesh.jpg" class="rounded-circle border border-4 border-warning me-4" style="width:120px; height:120px; object-fit:cover;">
                                     <div>
@@ -313,7 +473,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="card h-100 border-0 shadow-lg p-4 rounded-4 hover-scale" onclick="showTeamModal('ameesha.jpg', 'Ameesha Prabhu', 'CEO', 'CEO, Ameesha Prabhu shoulders the responsibility of nurturing the initiatives taken up by the Trust for Retailers and Retail Associates of India (TRRAIN) as its Co-Founder and Chief Executive Officer. Her passion for retail emerged over 28 years ago when she began her career as a shop floor associate to becoming the Head of Buying. She embraces technology with ease and has been involved in many Retail Technology Implementations. Deriving from her personal journey in retail, she has a well-rounded understanding of the retail environment as well as empathy with the front-end associates. She relishes opportunities to share her insights with aspiring retail professionals and entrepreneurs. At TRRAIN, she is responsible for incubating, developing & nurturing the various projects which directly impact the life of a retail associate. She likes working with the retail fraternity, and is a role model and mentor to the enthusiastic, young team at TRRAIN.')">
+                            <div class="card h-100 border-0 shadow-lg p-4 rounded-4 hover-scale" onclick="showTeamModal('ameesha.jpg', 'Ameesha Prabhu', 'CEO')">
                                 <div class="d-flex align-items-center">
                                     <img src="ameesha.jpg" class="rounded-circle border border-4 border-warning me-4" style="width:120px; height:120px; object-fit:cover;">
                                     <div>
@@ -330,37 +490,37 @@
                 <div class="tab-pane fade" id="pills-leadership">
                     <div class="row g-4 justify-content-center">
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('lead1.jpg', 'Swati Sontakke', 'Leader', 'Swati leads the operations team, ensuring that training programs run smoothly across all centers nationwide.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('lead1.jpg', 'Swati Sontakke', 'Leader')">
                                 <img src="lead1.jpg" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Swati Sontakke</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('lead2.jpeg', 'Priyaranjan Bidhar', 'Leader', 'Priyaranjan manages corporate partnerships, bridging the gap between our trainees and top retail employers.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('lead2.jpeg', 'Priyaranjan Bidhar', 'Leader')">
                                 <img src="lead2.jpeg" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Priyaranjan Bidhar</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('lead3.jpeg', 'Meena Sriramane', 'Leader', 'Meena is responsible for curriculum development, ensuring our training meets current industry standards.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('lead3.jpeg', 'Meena Sriramane', 'Leader')">
                                 <img src="lead3.jpeg" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Meena Sriramane</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('lead4.jpeg', 'Pooja Nagesh', 'Leader', 'Pooja oversees marketing and communications, spreading the word about our impact and success stories.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('lead4.jpeg', 'Pooja Nagesh', 'Leader')">
                                 <img src="lead4.jpeg" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Pooja Nagesh</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('lead5.jpg', 'Sajidali Pathan', 'Leader', 'Sajidali handles finance and administration, ensuring the organization remains sustainable and transparent.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('lead5.jpg', 'Sajidali Pathan', 'Leader')">
                                 <img src="lead5.jpg" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Sajidali Pathan</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('lead6.png', 'Sameer Iyer', 'Leader', 'Sameer focuses on technology integration, helping modernize our training delivery through digital tools.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('lead6.png', 'Sameer Iyer', 'Leader')">
                                 <img src="lead6.png" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Sameer Iyer</h5>
                             </div>
@@ -371,55 +531,55 @@
                 <div class="tab-pane fade" id="pills-advisors">
                     <div class="row g-4 justify-content-center">
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('adv1.jpg', 'Pinakiranjan Mishra', 'Advisor', 'A veteran in the retail space providing strategic guidance on scaling operations.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('adv1.jpg', 'Pinakiranjan Mishra', 'Advisor')">
                                 <img src="adv1.jpg" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Pinakiranjan Mishra</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('adv2.jpg', 'Bala Despande', 'Advisor', 'Bringing decades of investment and growth strategy expertise to the advisory board.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('adv2.jpg', 'Bala Despande', 'Advisor')">
                                 <img src="adv2.jpg" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Bala Despande</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('adv3.jpg', 'Shalini Kamath', 'Advisor', 'An expert in HR and organizational development, helping shape our culture.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('adv3.jpg', 'Shalini Kamath', 'Advisor')">
                                 <img src="adv3.jpg" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Shalini Kamath</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('adv4.jpg', 'Anuj Puri', 'Advisor', 'A leader in real estate and retail infrastructure, advising on center expansion.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('adv4.jpg', 'Anuj Puri', 'Advisor')">
                                 <img src="adv4.jpg" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Anuj Puri</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('adv5.jpg', 'Suhas Tuljapurkar', 'Advisor', 'Providing legal and compliance expertise to ensure robust governance.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('adv5.jpg', 'Suhas Tuljapurkar', 'Advisor')">
                                 <img src="adv5.jpg" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Suhas Tuljapurkar</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('adv6.jpg', 'Shashi Sinha', 'Advisor', 'Media and advertising guru helping amplifty the TRRAIN brand message.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('adv6.jpg', 'Shashi Sinha', 'Advisor')">
                                 <img src="adv6.jpg" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Shashi Sinha</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('adv7.jpg', 'Vidya Hariharan', 'Advisor', 'Expert in consumer behavior and retail trends.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('adv7.jpg', 'Vidya Hariharan', 'Advisor')">
                                 <img src="adv7.jpg" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Vidya Hariharan</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('adv8.jpg', 'Sairee Chahal', 'Advisor', 'Founder of SHEROES, advising on women empowerment initiatives.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('adv8.jpg', 'Sairee Chahal', 'Advisor')">
                                 <img src="adv8.jpg" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Sairee Chahal</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('adv9.webp', 'Mr. Rahul Mehta', 'Advisor', 'A mentor in the apparel industry guiding curriculum relevance.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('adv9.webp', 'Mr. Rahul Mehta', 'Advisor')">
                                 <img src="adv9.webp" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Mr. Rahul Mehta</h5>
                             </div>
@@ -430,31 +590,31 @@
                 <div class="tab-pane fade" id="pills-trustees">
                      <div class="row g-4 justify-content-center">
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('tr1.jpg', 'Rohit Srivastava', 'Trustee', 'Overseeing the strategic direction of the trust.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('tr1.jpg', 'Rohit Srivastava', 'Trustee')">
                                 <img src="tr1.jpg" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Rohit Srivastava</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('tr2.jpg', 'Richa Bajpai', 'Trustee', 'Ensuring the mission remains aligned with beneficiary needs.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('tr2.jpg', 'Richa Bajpai', 'Trustee')">
                                 <img src="tr2.jpg" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Richa Bajpai</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('tr3.jpg', 'Vistra ITCL', 'Trustee', 'Corporate trustee ensuring fiduciary responsibility.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('tr3.jpg', 'Vistra ITCL', 'Trustee')">
                                 <img src="tr3.jpg" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Vistra ITCL</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('tr4.jpeg', 'Megha Tata', 'Trustee', 'Media veteran contributing to outreach strategies.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('tr4.jpeg', 'Megha Tata', 'Trustee')">
                                 <img src="tr4.jpeg" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Megha Tata</h5>
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
-                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('tr5.jpg', 'Mr Vijay Jain', 'Trustee', 'Retail industry leader supporting network growth.')">
+                            <div class="card h-100 border-0 shadow text-center p-3 rounded-4 hover-scale" onclick="showTeamModal('tr5.jpg', 'Mr Vijay Jain', 'Trustee')">
                                 <img src="tr5.jpg" class="rounded-circle mx-auto mb-3" width="120">
                                 <h5>Mr Vijay Jain</h5>
                             </div>
@@ -474,7 +634,7 @@
                             <img id="teamModalImg" src="" class="rounded-circle border border-4 border-warning mb-3" style="width:150px; height:150px; object-fit:cover;">
                             <h3 class="fw-bold" id="teamModalName"></h3>
                             <span class="badge bg-brand text-dark mb-3" id="teamModalRole"></span>
-                            <p class="text-muted" id="teamModalDesc">this is where their description will be</p>
+                            <p class="text-muted">this is where their description will be</p>
                         </div>
                     </div>
                 </div>
@@ -775,11 +935,11 @@
                             <form>
                                 <label class="fw-bold small mb-2">Amount (₹)</label>
                                 <div class="d-flex gap-2 mb-3">
-                                    <button type="button" class="btn btn-outline-warning text-dark flex-grow-1 donate-preset">500</button>
-                                    <button type="button" class="btn btn-outline-warning text-dark flex-grow-1 donate-preset">1000</button>
-                                    <button type="button" class="btn btn-outline-warning text-dark flex-grow-1 donate-preset">2000</button>
+                                    <button type="button" class="btn btn-outline-warning text-dark flex-grow-1">500</button>
+                                    <button type="button" class="btn btn-outline-warning text-dark flex-grow-1">1000</button>
+                                    <button type="button" class="btn btn-outline-warning text-dark flex-grow-1">2000</button>
                                 </div>
-                                <input type="number" id="donateInput" class="form-control bg-light border-0 mb-3" placeholder="Custom Amount">
+                                <input type="number" class="form-control bg-light border-0 mb-3" placeholder="Custom Amount">
                                 <input type="text" class="form-control bg-light border-0 mb-3 validate-phone" placeholder="Phone Number">
                                 <button class="btn bg-dark-custom w-100 py-3 fw-bold">PROCEED TO PAY</button>
                             </form>
@@ -917,6 +1077,159 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <script src="script.js"></script>
+    <script>
+        // --- high contrast logic ---
+        // toggles a class on body to change colors
+        let isHighContrast = false;
+        const contrastBtn = document.getElementById('contrastBtn');
+        const body = document.body;
+
+        function toggleContrast() {
+            isHighContrast = !isHighContrast;
+            if (isHighContrast) {
+                body.classList.add('high-contrast');
+                contrastBtn.innerHTML = "Normal View";
+                contrastBtn.classList.remove('btn-outline-light');
+                contrastBtn.classList.add('btn-warning', 'text-dark');
+            } else {
+                body.classList.remove('high-contrast');
+                contrastBtn.innerHTML = "High Contrast";
+                contrastBtn.classList.remove('btn-warning', 'text-dark');
+                contrastBtn.classList.add('btn-outline-light');
+            }
+        }
+
+        // --- text size logic (feature 6) ---
+        // changes the root font size percent. since bootstrap uses rem (relative em),
+        // scaling the body font-size scales all text elements proportionally.
+        const slider = document.getElementById('textSizeSlider');
+
+        function slideTextSize(val) {
+            body.style.fontSize = val + '%';
+        }
+
+        function changeTextSize(scale) {
+            const percentage = scale * 100;
+            slider.value = percentage;
+            slideTextSize(percentage);
+        }
+
+        // --- animated counters logic (feature 2) ---
+        // detects when numbers are visible on screen, then counts up
+        const impactSection = document.getElementById('impact-section');
+        const counters = document.querySelectorAll('.counter');
+        let hasAnimated = false;
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target'); // gets number from html
+                const duration = 2000; // 2 seconds animation
+                const stepTime = 20;    
+                const steps = duration / stepTime;
+                const increment = target / steps;
+                
+                let current = 0;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.innerText = target.toLocaleString(); 
+                        clearInterval(timer);
+                    } else {
+                        counter.innerText = Math.ceil(current).toLocaleString();
+                    }
+                }, stepTime);
+            });
+        };
+
+        // uses intersection observer to trigger animation only when scrolled into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    animateCounters();
+                    hasAnimated = true;  
+                }
+            });
+        }, { threshold: 0.5 }); 
+        
+        if(impactSection) observer.observe(impactSection);
+
+        // --- real-time validation logic (feature 3) ---
+        // regex helpers for validation
+        const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        const validatePhone = (phone) => /^\d{10}$/.test(phone); // checks for 10 digits
+
+        // attach listeners to specific inputs marked with classes
+        document.querySelectorAll('.validate-email').forEach(input => {
+            input.addEventListener('input', function() {
+                if(validateEmail(this.value)) {
+                    this.classList.add('valid-input');
+                    this.classList.remove('invalid-input');
+                } else {
+                    this.classList.add('invalid-input');
+                    this.classList.remove('valid-input');
+                }
+            });
+        });
+
+        document.querySelectorAll('.validate-phone').forEach(input => {
+            input.addEventListener('input', function() {
+                if(validatePhone(this.value)) {
+                    this.classList.add('valid-input');
+                    this.classList.remove('invalid-input');
+                } else {
+                    this.classList.add('invalid-input');
+                    this.classList.remove('valid-input');
+                }
+            });
+        });
+
+        // --- form submission no-reload logic (feature 4) ---
+        // prevents default submit, hides form, shows success message
+        const appForm = document.getElementById('appForm');
+        const formContainer = document.getElementById('formContainer');
+        const successMessage = document.getElementById('successMessage');
+
+        if(appForm) {
+            appForm.addEventListener('submit', function(e) {
+                e.preventDefault(); // stops page reload
+                formContainer.classList.add('d-none'); // hides form
+                successMessage.classList.remove('d-none'); // shows message
+            });
+        }
+
+        // --- back to top button logic (feature 5) ---
+        // shows button when scrolled 50% down, scrolls to top on click
+        const backToTopBtn = document.getElementById('backToTopBtn');
+
+        window.onscroll = function() {
+            // calculate scroll percentage
+            const scrollTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollCurrent = document.documentElement.scrollTop;
+            
+            if ((scrollCurrent / scrollTotal) > 0.5) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- feature 1: team modal logic ---
+        // initializes a generic modal and fills it with specific content
+        function showTeamModal(img, name, role) {
+            // populate modal elements
+            document.getElementById('teamModalImg').src = img;
+            document.getElementById('teamModalName').innerText = name;
+            document.getElementById('teamModalRole').innerText = role;
+            
+            // show the modal using bootstrap's js api
+            var myModal = new bootstrap.Modal(document.getElementById('teamModal'));
+            myModal.show();
+        }
+
+    </script>
 </body>
 </html>

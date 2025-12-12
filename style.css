@@ -1,0 +1,156 @@
+/* --- brand colors & global styles --- */
+:root {
+    --brand-yellow: #fdc835;
+    --brand-dark: #1a1a1a;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    color: #333;
+    /* smooth transition when resizing text */
+    transition: font-size 0.2s ease; 
+}
+
+/* --- utility classes --- */
+.text-brand { color: var(--brand-yellow) !important; }
+.bg-brand { background-color: var(--brand-yellow) !important; color: #000; }
+.bg-dark-custom { background-color: var(--brand-dark) !important; color: white; }
+
+.rounded-4 { border-radius: 1rem !important; }
+.rounded-5 { border-radius: 1.5rem !important; }
+
+/* custom underline for headers */
+.section-header {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 3rem;
+}
+.section-header::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 4px;
+    background: var(--brand-yellow);
+    bottom: -10px;
+    left: 25%;
+}
+
+/* animation for marquee */
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+.marquee-content {
+    display: inline-block;
+    animation: scroll 30s linear infinite;
+}
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* nav tabs customization*/
+.nav-pills .nav-link {
+    color: #6c757d;
+    border-bottom: 4px solid transparent;
+    border-radius: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1rem 2rem;
+}
+.nav-pills .nav-link.active {
+    background-color: #f8f9fa;
+    color: black;
+    border-bottom: 4px solid var(--brand-yellow);
+}
+
+/* vertical pills for support section */
+.support-pills .nav-link {
+    border: none;
+    border-radius: 1rem;
+    text-transform: none;
+    text-align: left;
+    margin-bottom: 1rem;
+    background: white;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    padding: 1.5rem;
+    transition: all 0.3s;
+}
+.support-pills .nav-link:hover {
+    background-color: #f8f9fa;
+}
+.support-pills .nav-link.active {
+    background-color: var(--brand-dark);
+    color: white;
+    transform: scale(1.02);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+.support-pills .nav-link.active i {
+    color: black;
+    background-color: var(--brand-yellow) !important;
+}
+
+/* hover effects */
+.hover-scale { transition: transform 0.3s; cursor: pointer; }
+.hover-scale:hover { transform: scale(1.05); }
+
+/* accordion active state */
+.accordion-button:not(.collapsed) {
+    background-color: var(--brand-yellow);
+    color: black;
+    font-weight: bold;
+}
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0,0,0,.125);
+}
+
+/* smooth scroll */
+html { scroll-behavior: smooth; }
+
+/* focus accessibility */
+*:focus-visible { outline: 3px solid #FDD835; outline-offset: 2px; }
+
+/* custom scrollbar styling */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #FDD835; }
+
+/* animation to fade elements in */
+.fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
+@keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+
+/* high contrast mode styles */
+.high-contrast {
+    background-color: black !important;
+    color: #FDD835 !important;
+}
+.high-contrast * {
+    background-color: black !important;
+    color: #FDD835 !important;
+    border-color: #FDD835 !important;
+}
+.high-contrast img {
+    filter: grayscale(100%) contrast(150%);
+}
+
+/* validation styles for feature 3 */
+.valid-input { border: 2px solid #198754 !important; }
+.invalid-input { border: 2px solid #dc3545 !important; }
+
+/* back to top button styles for feature 5 */
+#backToTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none; /* hidden by default */
+    z-index: 999;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
